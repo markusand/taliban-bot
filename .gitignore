@@ -1,0 +1,6 @@
+.DS_Store
+.vercel
+.env
+node_modules
+public
+ngrok
