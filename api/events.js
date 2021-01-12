@@ -8,6 +8,10 @@ const regex = {
 };
 
 export default new SlackBot(bot => {
+	bot.event('channel_created', async ({ channel }) => {
+		await bot.client.post('conversations.join', { channel: channel.id });
+	});
+
 	bot.message(regex.GREETING, async ({ user }) => {
 		await bot.whisper(`No ens perdem en formalismes, <@${user}>. Directe al gra!`);
 	});
