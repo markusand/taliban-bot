@@ -40,7 +40,7 @@ export default class SlackBot {
 	 * @param  {String}		event   Event name https://api.slack.com/events
 	 * @param  {Function} handler Function to execute when event is catched
 	 */
-	event(event, handler) {
+	onEvent(event, handler) {
 		const { bot_id, type } = this.req.body.event;
 		if (!bot_id && type === event) {
 			this.setTask(handler(this.req.body.event));
@@ -52,7 +52,7 @@ export default class SlackBot {
 	 * @param  {RegExp}   pattern   Text in message that triggers handler
 	 * @param  {Function} handler		Function to execute
 	 */
-	message(pattern, handler) {
+	onMessage(pattern, handler) {
 		this.event('message', event => {
 			if (event.text?.match(pattern)) return handler(event);
 			return false;
@@ -60,7 +60,7 @@ export default class SlackBot {
 	}
 
 	/* Shortcut for bot mention event */
-	mention(handler) {
+	onMention(handler) {
 		this.event('app_mention', event => handler(event));
 	}
 
