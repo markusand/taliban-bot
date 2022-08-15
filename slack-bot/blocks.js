@@ -1,28 +1,28 @@
-const PLAIN_TEXT = text => ({ type: 'plain_text', text, emoji: true });
+const PlainText = text => ({ type: 'plain_text', text, emoji: true });
 
-const MARKDOWN = text => ({ type: 'mrkdwn', text });
+const Markdown = text => ({ type: 'mrkdwn', text });
 
-export const HEADER = text => ({ type: 'header', text: PLAIN_TEXT(text) });
+export const Header = text => ({ type: 'header', text: PlainText(text) });
 
-export const DIVIDER = { type: 'divider' };
+export const Divider = { type: 'divider' };
 
-export const BUTTON = (label, value, action_id, url) => ({
+export const Button = (label, value, action_id, url) => ({
 	type: 'button',
-	text: PLAIN_TEXT(label),
+	text: PlainText(label),
 	value,
 	action_id,
 	url,
 });
 
-export const OVERFLOW = (options, action_id) => ({
+export const Overflow = (options, action_id) => ({
 	type: 'overflow',
-	options: options.map(({ text, value }) => ({ text: PLAIN_TEXT(text), value })),
+	options: options.map(({ text, value }) => ({ text: PlainText(text), value })),
 	action_id,
 });
 
-export const SELECT = (placeholder, options, action_id) => ({
+export const Select = (placeholder, options, action_id) => ({
 	type: 'static_select',
-	placeholder: PLAIN_TEXT(placeholder),
+	placeholder: PlainText(placeholder),
 	action_id,
 	options: options.map(option => ({
 		text: { type: 'plain_text', text: option.text, emoji: true },
@@ -30,47 +30,47 @@ export const SELECT = (placeholder, options, action_id) => ({
 	})),
 });
 
-export const IMAGE = (url, title) => ({
+export const Image = (url, title) => ({
 	type: 'image',
-	...(title && { title: PLAIN_TEXT(title || url) }),
+	...(title && { title: PlainText(title || url) }),
 	image_url: url,
 	alt_text: title || url,
 });
 
-export const DATEPICKER = (placeholder, initial_date, action_id) => ({
+export const Datepicker = (placeholder, initial_date, action_id) => ({
 	type: 'datepicker',
 	initial_date,
-	placeholder: PLAIN_TEXT(placeholder),
+	placeholder: PlainText(placeholder),
 	action_id,
 });
 
-export const TIMEPICKER = (placeholder, initial_time, action_id) => ({
+export const Timepicker = (placeholder, initial_time, action_id) => ({
 	type: 'timepicker',
 	initial_time,
-	placeholder: PLAIN_TEXT(placeholder),
+	placeholder: PlainText(placeholder),
 	action_id,
 });
 
-export const CHECKBOXES = (options, action_id) => ({
+export const Checkboxes = (options, action_id) => ({
 	type: 'checkboxes',
 	options: options.map(({ text, description, value }) => ({
-		text: MARKDOWN(text),
-		...(description && { description: MARKDOWN(description) }),
+		text: Markdown(text),
+		...(description && { description: Markdown(description) }),
 		value,
 	})),
 	action_id,
 });
 
-export const RADIOBUTTONS = (options, action_id) => ({
+export const Radiobuttons = (options, action_id) => ({
 	type: 'radio_buttons',
-	options: options.map(({ text, value }) => ({ text: PLAIN_TEXT(text), value })),
+	options: options.map(({ text, value }) => ({ text: PlainText(text), value })),
 	action_id,
 });
 
-export const SECTION = (text, accessory) => ({ type: 'section', text: MARKDOWN(text), accessory });
+export const Section = (text, accessory) => ({ type: 'section', text: Markdown(text), accessory });
 
-export const FIELDS = fields => ({ type: 'section', fields });
+export const Fields = fields => ({ type: 'section', fields });
 
-export const ACTIONS = elements => ({ type: 'actions', elements });
+export const Actions = elements => ({ type: 'actions', elements });
 
-export const CONTEXT = elements => ({ type: 'context', elements });
+export const Context = elements => ({ type: 'context', elements });

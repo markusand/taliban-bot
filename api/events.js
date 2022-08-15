@@ -37,11 +37,11 @@ export default new SlackBot(bot => {
 	});
 
 	bot.onMention(async ({ user }) => {
-		const { SECTION, IMAGE } = bot.blocks;
+		const { Section, Image } = bot.blocks;
 		await bot.respond([
-			SECTION(`Infidel <@${user}>, pronunciant el nom del profeta en va!`),
-			IMAGE('https://i.gifer.com/76jQ.gif'),
-			SECTION('Oh espera... això era _Mahoma_, no jo. Perdó.'),
+			Section(`Infidel <@${user}>, pronunciant el nom del profeta en va!`),
+			Image('https://i.gifer.com/76jQ.gif'),
+			Section('Oh espera... això era _Mahoma_, no jo. Perdó.'),
 		]);
 	});
 });
