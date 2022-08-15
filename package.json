@@ -1,7 +1,7 @@
 {
-  "name": "serverless-slack-bot",
+  "name": "taliban-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Enforce proper communication rules in Slack",
   "main": "public/index.html",
   "scripts": {
     "build": "rm -rf public && mkdir public && echo 'Custom Build' > ./public/index.html"
