@@ -54,7 +54,7 @@ export default class SlackBot {
 	 */
 	onMessage(pattern, handler) {
 		this.event('message', event => {
-			if (event.text?.match(pattern)) return handler(event);
+			if (event.text && event.text.match(pattern)) return handler(event);
 			return false;
 		});
 	}
